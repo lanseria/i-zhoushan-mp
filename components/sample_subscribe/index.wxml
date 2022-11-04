@@ -1,0 +1,66 @@
+<!--components/sample_subscribe/index.wxml-->
+
+<view wx:if="{{showIdeas}}" class="bg-white h-500rpx w-full rounded-40rpx">
+
+  <view class="p-40rpx text-size-40rpx">
+    <view class="mb-45rpx">设置提醒</view>
+    <view class="flex mb-45rpx">
+      <view>最近</view>
+      <view class="text-red-400 border-dashed border-0 border-b-1rpx px-10rpx" bindtap="handleCalendar">
+        {{prevDateStr}}
+      </view>
+      <view>做了核酸</view>
+    </view>
+    <view class="flex mb-45rpx">
+      <view>每</view>
+      <view class="text-red-500 border-dashed border-0 border-b-1rpx px-10rpx" bindtap="handleCount">
+        {{countValue[0]}}</view>
+      <view>天提醒我一次</view>
+    </view>
+    <view class="flex mb-45rpx">
+      <view>设置当天</view>
+      <view class="text-red-600 border-dashed border-0 border-b-1rpx px-10rpx" bindtap="handleTime">{{time}}</view>
+      <view>提醒我</view>
+    </view>
+    <view class="flex justify-between">
+      <view class="w-full">
+        <t-button block theme="primary" icon="check-circle" bind:tap="handleSubscribe">确认订阅</t-button>
+      </view>
+      <view class="w-20rpx"></view>
+      <view class="w-full">
+        <t-button block theme="danger" variant="outline" disabled="{{!isSubscribe}}" bind:tap="handleCancelSubscribe">
+          取消订阅</t-button>
+      </view>
+    </view>
+  </view>
+</view>
+
+<t-calendar visible="{{dateVisible}}" minDate="{{minDate}}" maxDate="{{maxDate}}"
+  bind:confirm="handleCalendarConfirm" />
+
+<t-picker visible="{{countVisible}}" value="{{countValue}}" data-key="city" title="提醒间隔" cancelBtn="取消" confirmBtn="确认"
+  bindchange="onPickerChange" bindcancel="onPickerCancel">
+  <t-picker-item options="{{counts}}"></t-picker-item>
+</t-picker>
+<!-- 时分 -->
+<t-date-time-picker title="选择时间" visible="{{timeVisible}}" mode="{{['null', 'minute']}}" value="{{time}}" format="HH:mm"
+  bindchange="onConfirm" bindpick="onColumnChange" bindcancel="hidePicker"></t-date-time-picker>
+<t-popup visible="{{tipVisible}}" bind:visible-change="onTipVisibleChange" placement="center">
+  <view class="rounded-16rpx bg-white text-gray-500 w-90vw h-400rpx">
+    <view class="text-size-50rpx text-center py-30rpx">i舟山提醒您</view>
+    <view class="px-40rpx">
+      <view>上一次记录的做核酸的日期为：<text class="text-red-600">{{prevDateStr}}</text></view>
+      <view>已经过去了{{countValue[0]}}天，该做核酸啦！</view>
+      <view class="flex justify-between mt-30rpx">
+        <view class="w-full">
+          <t-button block theme="primary" icon="check-circle" bind:tap="handleContinue">继续订阅</t-button>
+        </view>
+        <view class="w-20rpx"></view>
+        <view class="w-full">
+          <t-button block theme="danger" variant="outline" disabled="{{!isSubscribe}}" bind:tap="handleCancel">
+            重新修改</t-button>
+        </view>
+      </view>
+    </view>
+  </view>
+</t-popup>

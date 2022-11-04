@@ -1,0 +1,13 @@
+@import 'windi.wxss';
+
+.shadow-border {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 16rpx 48rpx;
+}
+
+.filter-saturate-0 {
+  filter: saturate(0%);
+}
+
+.filter-blur {
+  filter: blur(10rpx);
+}

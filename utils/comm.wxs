@@ -1,0 +1,39 @@
+
+module.exports = {
+  statusColorMap: {
+    '0': '#C24740',
+    '1': '#F3AE1A',
+    '2': '#50C240',
+    '3': '#BEBEBE',
+    'null': '#BEBEBE',
+  },
+  statusTextMap: {
+    '0': '#拥挤',
+    '1': '#忙碌',
+    '2': '#空闲',
+    '3': '#休息',
+    'null': '#休息#',
+  },
+  _bgSelect: function (idx, city, district, town) {
+    console.log(idx)
+    if (idx == 0) {
+      if (city)
+        return true
+      else {
+        return false
+      }
+    } else if (idx == 1) {
+      if (district)
+        return true
+      else {
+        return false
+      }
+    } else if (idx == 2) {
+      if (town)
+        return true
+      else {
+        return false
+      }
+    }
+  },
+}

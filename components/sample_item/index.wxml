@@ -1,0 +1,12 @@
+<!--components/sample_item/index.wxml-->
+<view class="ml-20rpx">
+  <view class="flex justify-start items-center">
+    <view class="text-size-20rpx mr-15rpx flex-shrink-0 text-white px-12rpx py-8rpx rounded-10rpx"
+      style="background-color:{{tools.statusColorMap[item.status+'']}}">
+      {{tools.statusTextMap[item.status+'']}}</view>
+    <view class="text-size-30rpx">{{item.title}}</view>
+  </view>
+  <view class="text-size-20rpx text-gray-500 mt-20rpx">{{item.workTime}}</view>
+</view>
+
+<wxs src="../../utils/comm.wxs" module="tools" />

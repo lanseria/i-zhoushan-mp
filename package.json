@@ -1,0 +1,28 @@
+{
+  "name": "i-zhoushan-mp",
+  "version": "1.0.0",
+  "description": "舟山查询",
+  "main": "app.ts",
+  "scripts": {
+    "windicss": "windicss",
+    "wf": "watch -p 'pages/**/*.wxml' -p 'components/**/*.wxml' -c 'npm run w'",
+    "w": "npm run windicss 'pages/**/*.wxml' 'components/**/*.wxml' -o /windi.wxss --config windi.config.js -d && mv windi.css windi.wxss"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Lanseria/i-zhoushan-mp.git"
+  },
+  "keywords": [],
+  "author": "lanseria",
+  "license": "MIT",
+  "devDependencies": {
+    "miniprogram-api-typings": "^3.6.0",
+    "watch-cli": "^0.2.3",
+    "windicss": "^3.5.6"
+  },
+  "dependencies": {
+    "tdesign-miniprogram": "0.24.0",
+    "dayjs": "^1.11.5",
+    "wx-axios-promise": "^2.4.1"
+  }
+}

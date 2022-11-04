@@ -1,0 +1,36 @@
+{
+  "appid": "wx5cc15d7198ac4b47",
+  "compileType": "miniprogram",
+  "condition": {},
+  "description": "项目配置文件",
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  },
+  "libVersion": "2.26.1",
+  "packOptions": {
+    "ignore": [
+      {
+        "value": "package-lock.json",
+        "type": "file"
+      }
+    ],
+    "include": []
+  },
+  "projectname": "i-zhoushan-mp",
+  "setting": {
+    "autoAudits": false,
+    "babelSetting": {
+      "disablePlugins": [],
+      "ignore": [],
+      "outputPath": ""
+    },
+    "packNpmManually": false,
+    "useCompilerPlugins": [
+      "typescript"
+    ],
+    "minified": true
+  },
+  "simulatorPluginLibVersion": {},
+  "simulatorType": "wechat"
+}

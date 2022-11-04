@@ -1,0 +1,94 @@
+<!--index.wxml-->
+<view class="relative h-screen w-full">
+  <map class="absolute h-full w-full" id="map" subkey="{{key}}" layer-style="2" latitude="{{location.latitude}}"
+    longitude="{{location.longitude}}" scale="{{scale}}" min-scale="{{minScale}}" max-scale="{{maxScale}}"
+    show-location="{{showPosition}}" show-compass="{{isShowCompass}}" markers="{{markers}}" show-scale="{{isShowScale}}"
+    bindmarkertap="onTapMarker" bindregionchange="onRegionChange">
+  </map>
+  <view class="absolute top-0 w-200rpx p-20rpx box-border">
+    <view class="inline-flex flex-col">
+      <view class="inline-flex items-center bg-white px-20rpx py-10rpx rounded-20rpx mb-10rpx" wx:for="{{statusList}}"
+        wx:key="value" wx:for-item="item" bindtap="setFilter" data-id="{{item.value}}">
+        <image class="h-36rpx w-36rpx" src="../../asset/{{item.value}}.png" />
+        <text class="text-size-25rpx ml-20rpx">{{item.label}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="absolute top-0 right-0 w-200rpx p-20rpx box-border text-right">
+    <view class="inline-flex flex-col bg-white rounded-20rpx">
+      <view class="h-30rpx p-20rpx border-0 border-b-1rpx border-solid border-gray-100" bindtap="handleShowMapSelect">
+        <image class="h-30rpx w-30rpx" src="../../asset/ditu.png" />
+      </view>
+      <view class="h-30rpx p-20rpx border-0 border-b-1rpx border-solid border-gray-100" bindtap="getLocation">
+        <image class="h-30rpx w-30rpx" src="../../asset/daohang.png" />
+      </view>
+    </view>
+  </view>
+  <view class="absolute bottom-0 w-full p-20rpx box-border">
+    <view class="flex justify-between py-20rpx box-border">
+      <t-button icon="logo-wechat" shape="circle" open-type="contact"></t-button>
+      <t-button theme="primary" icon="refresh" shape="circle" bind:tap="fetchData"></t-button>
+    </view>
+    <view class="pb-10rpx flex justify-between">
+      <t-button theme="primary" icon="round" shape="circle" bind:tap="handleShowIdeas"></t-button>
+      <view>
+        <t-button icon="add" shape="round" bind:tap="onIncreaseScale"></t-button>
+        <t-button icon="remove" shape="round" bind:tap="onDecreaseScale"></t-button>
+      </view>
+      <t-button icon="bulletpoint" shape="circle" bind:tap="handleShowMarkerList"></t-button>
+    </view>
+    <!-- 列表页 -->
+    <view wx:if="{{showMarkerList}}" class="bg-white h-500rpx w-full rounded-40rpx overflow-y-scroll relative">
+      <view class="p-30rpx flex justify-start fixed bg-gray-200 rounded-tl-40rpx rounded-br-40rpx">
+        <view
+          class="{{tools._bgSelect(idx,city,district,town) ? 'bg-gray-300 text-gray-500':'bg-gray-100 text-gray-300'}} px-20rpx py-10rpx text-size-25rpx mr-20rpx rounded-20rpx "
+          wx:for="{{areaList}}" wx:key="item" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}"
+          bindtap="setArea">{{item}}
+        </view>
+      </view>
+      <view class="h-100rpx"></view>
+      <view wx:for="{{markers}}" wx:key="value" wx:for-item="item" class="p-40rpx flex justify-between">
+        <sample-item item="{{item}}" data-item="{{item}}" bindtap="setCenter"></sample-item>
+        <view>
+          <t-button icon="arrow-up" shape="round" data-item="{{item}}" bind:tap="handleOpenApp"></t-button>
+        </view>
+      </view>
+    </view>
+    <!-- 详情页 -->
+    <view wx:if="{{showMarkerDetail}}" class="bg-white h-300rpx w-full rounded-40rpx">
+      <view class="p-40rpx flex flex-col justify-between h-full box-border">
+        <view class="flex justify-start">
+          <t-button icon="arrow-left" shape="circle" bind:tap="handleShowMarkerList"></t-button>
+          <sample-item item="{{currentMarker}}" data-item="{{currentMarker}}" bindtap="setCenter"></sample-item>
+        </view>
+        <view>
+          <t-button type="primary" icon="arrow-up" shape="round" block data-item="{{currentMarker}}"
+            bind:tap="handleOpenApp">出发
+          </t-button>
+        </view>
+      </view>
+    </view>
+    <!-- 选择地图 -->
+    <view wx:if="{{showMapSelect}}" class="bg-white h-500rpx w-full rounded-40rpx">
+      <view class="p-40rpx">
+        <view class="text-size-30rpx">选择地图</view>
+        <view class="flex justify-start mt-40rpx">
+          <view wx:for="{{mapList}}" wx:key="value" wx:for-item="item"
+            class="relative w-280rpx h-190rpx shadow-border rounded-20rpx mr-20rpx" bindtap="handleSwitchMap"
+            data-item="{{item}}">
+            <image class="absolute h-full w-full rounded-20rpx" src="{{item.cover}}"></image>
+            <view class="absolute bottom-0 h-60rpx left-0 right-0 bg-white filter-blur">
+            </view>
+            <view wx:if="{{item.active}}" class="absolute bottom-0 left-0 right-0 text-size-25rpx px-20rpx py-20rpx">
+              <view>当前地图</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <sample-subscribe id="sample_subscribe"></sample-subscribe>
+  </view>
+</view>
+
+<wxs src="../../utils/comm.wxs" module="tools" />
