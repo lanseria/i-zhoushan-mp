@@ -43,7 +43,8 @@ Component({
 
     openid: '',
 
-    predictNextDate: 0
+    predictNextDate: 0,
+    predictNextDateStr: ""
   },
 
   /**
@@ -78,7 +79,8 @@ Component({
     },
     setPredictNextDate(dateNum: number) {
       this.setData({
-        predictNextDate: dateNum
+        predictNextDate: dateNum,
+        predictNextDateStr: dayjs.unix(dateNum).format('YYYY/MM/DD HH:mm')
       })
       this.handleTipPopup()
     },
@@ -183,7 +185,8 @@ Component({
               countValue: [res.intervalDay + ''],
               time: dayjs.unix(res.currentSampleDateTime).format('HH:mm'),
               isSubscribe: res.isSubscribe,
-              openid: res.openid
+              openid: res.openid,
+              predictNextDateStr: dayjs.unix(res.nextSampleDateTime).format('YYYY/MM/DD HH:mm')
             })
           } else {
             console.log('登录失败！' + r.errMsg)

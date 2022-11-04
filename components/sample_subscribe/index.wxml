@@ -3,7 +3,9 @@
 <view wx:if="{{showIdeas}}" class="bg-white h-500rpx w-full rounded-40rpx">
 
   <view class="p-40rpx text-size-40rpx">
-    <view class="mb-45rpx">设置提醒</view>
+    <view class="mb-45rpx">设置提醒<text wx:if="{{isSubscribe}}"
+        class="text-size-24rpx">(下次提醒日期:{{predictNextDateStr}})</text><text wx:else
+        class="text-size-24rpx">(还未设置提醒)</text></view>
     <view class="flex mb-45rpx">
       <view>最近</view>
       <view class="text-red-400 border-dashed border-0 border-b-1rpx px-10rpx" bindtap="handleCalendar">
@@ -12,10 +14,10 @@
       <view>做了核酸</view>
     </view>
     <view class="flex mb-45rpx">
-      <view>每</view>
+      <view>设置</view>
       <view class="text-red-500 border-dashed border-0 border-b-1rpx px-10rpx" bindtap="handleCount">
         {{countValue[0]}}</view>
-      <view>天提醒我一次</view>
+      <view>天后提醒我一次</view>
     </view>
     <view class="flex mb-45rpx">
       <view>设置当天</view>
@@ -24,11 +26,13 @@
     </view>
     <view class="flex justify-between">
       <view class="w-full">
-        <t-button block theme="primary" icon="check-circle" bind:tap="handleSubscribe">确认订阅</t-button>
+        <t-button block theme="primary" icon="{{isSubscribe?'refresh':'check-circle'}}" bind:tap="handleSubscribe">
+          {{isSubscribe?'更新':'确认'}}订阅
+        </t-button>
       </view>
       <view class="w-20rpx"></view>
       <view class="w-full">
-        <t-button block theme="danger" variant="outline" disabled="{{!isSubscribe}}" bind:tap="handleCancelSubscribe">
+        <t-button block theme="default" disabled="{{!isSubscribe}}" bind:tap="handleCancelSubscribe">
           取消订阅</t-button>
       </view>
     </view>
