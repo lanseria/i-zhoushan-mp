@@ -59,9 +59,9 @@ Component({
     handleContinue() {
       const { predictNextDate } = this.data
       this.setData({
-        prevDateStr: dayjs.unix(predictNextDate).format('YYYY/MM/DD'),
-        minDate: dayjs.unix(predictNextDate).subtract(15, 'day').valueOf(),
-        maxDate: dayjs.unix(predictNextDate).add(9, 'day').valueOf(),
+        prevDateStr: dayjs().format('YYYY/MM/DD'),
+        minDate: dayjs().subtract(15, 'day').valueOf(),
+        maxDate: dayjs().add(9, 'day').valueOf(),
         time: dayjs.unix(predictNextDate).format('HH:mm'),
         tipVisible: false,
       })
