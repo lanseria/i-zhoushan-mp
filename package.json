@@ -5,7 +5,7 @@
   "main": "app.ts",
   "scripts": {
     "windicss": "windicss",
-    "wf": "watch -p 'pages/**/*.wxml' -p 'components/**/*.wxml' -c 'npm run w'",
+    "cw": "chokidar \"pages/**/*.wxml\" \"components/**/*.wxml\" -c \"npm run w\"",
     "w": "npm run windicss 'pages/**/*.wxml' 'components/**/*.wxml' -o /windi.wxss --config windi.config.js -d && mv windi.css windi.wxss"
   },
   "repository": {
