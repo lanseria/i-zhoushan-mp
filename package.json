@@ -16,13 +16,13 @@
   "author": "lanseria",
   "license": "MIT",
   "devDependencies": {
+    "chokidar-cli": "^3.0.0",
     "miniprogram-api-typings": "^3.6.0",
-    "watch-cli": "^0.2.3",
     "windicss": "^3.5.6"
   },
   "dependencies": {
-    "tdesign-miniprogram": "0.24.0",
     "dayjs": "^1.11.5",
+    "tdesign-miniprogram": "0.24.0",
     "wx-axios-promise": "^2.4.1"
   }
 }
