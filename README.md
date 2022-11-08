@@ -1,4 +1,9 @@
-# i-zhoushan-mp i舟山查询地图
+# i-zhoushan-mp 《万物地图》微信小程序
+
+## 相关项目
+
+- https://github.com/lanseria/i-zhoushan-serve
+- https://github.com/lanseria/i-zhoushan-pc
 
 ## 开发说明
 
