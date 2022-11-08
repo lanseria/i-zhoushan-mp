@@ -39,19 +39,20 @@
       <t-button icon="bulletpoint" shape="circle" bind:tap="handleShowMarkerList"></t-button>
     </view>
     <!-- 列表页 -->
-    <view wx:if="{{showMarkerList}}" class="bg-white h-500rpx w-full rounded-40rpx overflow-y-scroll relative">
-      <view class="p-30rpx flex justify-start fixed bg-gray-200 rounded-tl-40rpx rounded-br-40rpx">
+    <view wx:if="{{showMarkerList}}" class="bg-white h-500rpx w-full rounded-40rpx relative">
+      <view class="p-30rpx flex justify-start absolute bg-gray-200 rounded-tl-40rpx rounded-br-40rpx">
         <view
           class="{{tools._bgSelect(idx,city,district,town) ? 'bg-gray-300 text-gray-500':'bg-gray-100 text-gray-300'}} px-20rpx py-10rpx text-size-25rpx mr-20rpx rounded-20rpx "
           wx:for="{{areaList}}" wx:key="item" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}"
           bindtap="setArea">{{item}}
         </view>
       </view>
-      <view class="h-100rpx"></view>
-      <view wx:for="{{markers}}" wx:key="value" wx:for-item="item" class="p-40rpx flex justify-between">
-        <sample-item item="{{item}}" data-item="{{item}}" bindtap="setCenter"></sample-item>
-        <view>
-          <t-button icon="arrow-up" shape="round" data-item="{{item}}" bind:tap="handleOpenApp"></t-button>
+      <view class="overflow-y-scroll h-full pt-90rpx box-border">
+        <view wx:for="{{markers}}" wx:key="value" wx:for-item="item" class="p-40rpx flex justify-between">
+          <sample-item item="{{item}}" data-item="{{item}}" bindtap="setCenter"></sample-item>
+          <view>
+            <t-button icon="arrow-up" shape="round" data-item="{{item}}" bind:tap="handleOpenApp"></t-button>
+          </view>
         </view>
       </view>
     </view>

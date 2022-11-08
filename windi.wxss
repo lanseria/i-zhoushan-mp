@@ -109,9 +109,6 @@
 .h-500rpx {
   height: 500rpx;
 }
-.h-100rpx {
-  height: 100rpx;
-}
 .h-300rpx {
   height: 300rpx;
 }
@@ -120,6 +117,9 @@
 }
 .h-60rpx {
   height: 60rpx;
+}
+.h-100rpx {
+  height: 100rpx;
 }
 .h-400rpx {
   height: 400rpx;
@@ -218,6 +218,9 @@
 }
 .pb-10rpx {
   padding-bottom: 10rpx;
+}
+.pt-90rpx {
+  padding-top: 90rpx;
 }
 .fixed {
   position: fixed;

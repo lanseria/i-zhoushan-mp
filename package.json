@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "dayjs": "^1.11.5",
-    "tdesign-miniprogram": "0.24.0",
+    "tdesign-miniprogram": "0.25.0",
     "wx-axios-promise": "^2.4.1"
   }
 }
