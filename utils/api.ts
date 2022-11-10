@@ -46,7 +46,7 @@ export const queryList = async (areaName: string, gisLat = '', gisLng = '') => {
     isLive: '0',
   }
   const r = await api({
-    url: `/mp/sample/points`,
+    url: `/sample/points`,
     method: 'POST',
     data: paramData
   })
@@ -55,7 +55,7 @@ export const queryList = async (areaName: string, gisLat = '', gisLng = '') => {
 
 export const getCreateSampleUser = async (code: string) => {
   const r = await api({
-    url: '/mp/sample/user',
+    url: '/sample/user',
     method: 'GET',
     data: {
       code
@@ -66,7 +66,7 @@ export const getCreateSampleUser = async (code: string) => {
 
 export const updateSampleUser = async (data: any) => {
   const r = await api({
-    url: '/mp/sample/user',
+    url: '/sample/user',
     method: 'PUT',
     data
   })
