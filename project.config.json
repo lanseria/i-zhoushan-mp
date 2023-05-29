@@ -29,7 +29,8 @@
     "useCompilerPlugins": [
       "typescript"
     ],
-    "minified": true
+    "minified": true,
+    "condition": false
   },
   "simulatorPluginLibVersion": {},
   "simulatorType": "wechat"
